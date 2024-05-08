@@ -9,12 +9,18 @@
     <div id="app">
         <h1>Agenda de Contatos</h1>
 
-        <address>
-            <img v-bind:src="picture" v-bidn:alt="firstName"><br>
-            {{firstName}} {{lastName}}<br>
-            E-mail: {{email}}<br>
-            Cidade: {{city}}
-        </address>
+        <button v-on:click="getData">Carregar dados</button>
+
+        <ul>
+            <li v-for="item in contactList">
+                <address>
+                    <img v-bind:src="item.picture" v-bind:alt="firstName"><br>
+                    {{item.firstName}} {{item.lastName}}<br>
+                    E-mail: {{item.email}}<br>
+                    Cidade: {{item.city}}
+                </address>
+            </li>
+        </ul>
     </div>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
