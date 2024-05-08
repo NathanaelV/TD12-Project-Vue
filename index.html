@@ -7,10 +7,17 @@
 </head>
 <body>
     <div id="app">
+        <h1>Agenda de Contatos</h1>
 
+        <address>
+            <img v-bind:src="picture" v-bidn:alt="firstName"><br>
+            {{firstName}} {{lastName}}<br>
+            E-mail: {{email}}<br>
+            Cidade: {{city}}
+        </address>
     </div>
     
-    <script src="main.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
