@@ -1,6 +1,7 @@
 const app = Vue.createApp ({
     data(){
         return{
+            searchText: '',
             firstName: 'Casey',
             lastName: 'Jones',
             email: 'casey.jones@email.com',
@@ -32,6 +33,25 @@ const app = Vue.createApp ({
             ]
         }
     },
+
+    computed: {
+        listResult(){
+
+            // Verific se há um coteúdo em searchText
+            if(this.searchText) {
+                return this.contactList.filter(contact => {
+
+                    // console.log(contact.firstName.toLoweCase)
+                    return contact.firstName.toLowerCase().includes(this.searchText.toLowerCase());
+
+                });
+            } else {
+                // Retorna todos os contatos
+                return this.contactList;
+            }
+        }
+    },
+
     methods: {
         changeData(){
             this.firstName = 'Phoenix',
@@ -40,6 +60,15 @@ const app = Vue.createApp ({
             this.city      = 'Athens'
             this.picture   = 'https://randomuser.me/api/portraits/men/52.jpg'
         },
+
+        removeContact(index) {
+            // console.log('Index: ' + index)
+
+            // Excluindo o objeto do index selecionado
+            this.contactList.splice(index, 3);
+
+        },
+
         async getData(){
             let response = await fetch('https://randomuser.me/api/?results=10');
 
