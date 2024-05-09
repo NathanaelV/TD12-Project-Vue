@@ -9,7 +9,7 @@ const app = Vue.createApp ({
             picture: 'https://randomuser.me/api/portraits/men/57.jpg',
 
             contactList: [
-                {
+               /* {
                     firstName:  'Casey',
                     lastName:   'Jones',
                     email:      'casey.jones@email.com',
@@ -29,7 +29,7 @@ const app = Vue.createApp ({
                     email:      'lois.lane@email.com',
                     city:       'Metrópolis',
                     picture:    'https://randomuser.me/api/portraits/women/57.jpg'
-                }
+                } */
             ]
         }
     },
@@ -50,6 +50,10 @@ const app = Vue.createApp ({
                 return this.contactList;
             }
         }
+    },
+
+    async mounted() {
+        this.listResult = await this.getData();
     },
 
     methods: {
