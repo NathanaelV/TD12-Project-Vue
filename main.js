@@ -49,7 +49,28 @@ const app = Vue.createApp ({
             // Armazenando os dados do JSON
             let data = await response.json();
 
-            console.log(data);
+            // Limpar o Array
+            this.contactList = [];
+
+            // console.log(data);
+            data.results.forEach(item =>{
+
+                // Criar um objeto genérico
+                var contact = new Object();
+
+                contact.picture     = item.picture.large
+                contact.firstName   = item.name.first;
+                contact.lastName    = item.name.last;
+                contact.email       = item.email;
+                contact.city        = item.location.city;
+
+                // Ver os objetos do contato no console
+                // console.log('-----------------');
+                // console.log(contact);
+
+                // Adicionar objeto ao Array
+                this.contactList.push(contact)
+            });
         }
     }
 })
